@@ -43,7 +43,7 @@ private final String userEmployeeNumber;
         this.userFirstName = userPayroll[2];
 
         initComponents();
-        String csvPayrollUser = "src/oop_t2_payroll/PayrollRecords.csv";
+        String csvPayrollUser = "C:\\Users\\sales\\Documents\\GitHub\\QUEENIEVER\\OOP--TA\\FinalOOPTA\\src\\oop_t2_payroll\\PayrollRecords.csv";
         List<String[]> records = FileHandling.readCSV(csvPayrollUser);
         parsePayrollRecords(records);
         populatecomboboxCoveredPeriods();
@@ -222,7 +222,7 @@ private final String userEmployeeNumber;
     private List<Integer> populateByYear() {
         List<Integer> years = new ArrayList<>();
         int currentYear = Year.now().getValue();
-        for (int i = currentYear - 4; i <= currentYear; i++) {  //assuming company store data for 5years
+        for (int i = currentYear - 6; i <= currentYear; i++) {  //assuming company store data for 5years
             years.add(i);
         }
         return years;
@@ -258,11 +258,18 @@ private final String userEmployeeNumber;
         String searchId = jTextFieldEmployeeNum.getText();
         String searchMonth = jComboBoxCoveredMonth.getSelectedItem().toString();
         String searchYear = jComboBoxCoveredYear.getSelectedItem().toString();
+        
+        
+        
+        //System.out.println(searchPeriod);
 
         for (int i = 0; i < payrollData.size(); i++) {
             PayrollUserInformation payrollUserInfo = payrollData.get(i);
             if (payrollUserInfo.getEmployeeNo().equals(searchId) && payrollUserInfo.getCoveredMonth().equals(searchMonth) && payrollUserInfo.getCoveredYear().equals(searchYear)) {
-
+                return i;
+            }
+            
+            if (payrollUserInfo.getEmployeeNo().equals(searchId) && payrollUserInfo.getCoveredMonth().equals(searchMonth) && payrollUserInfo.getCoveredYear().equals(searchYear)) {
                 return i;
             }
         }

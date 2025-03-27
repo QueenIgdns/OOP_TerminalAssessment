@@ -97,14 +97,15 @@ public final class LeaveApplicationUser1 extends javax.swing.JFrame {
     public List<LeaveDetails> parseRecords(List<String[]> records) {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
 
         // Sort list of String[] based on the first element (date)
         Collections.sort(records, (o1, o2) -> {
             Date date1;
             Date date2;
             try {
-                date1 = dateFormat.parse(o1[4].trim());
-                date2 = dateFormat.parse(o2[4].trim());
+                date1 = (o1[7].contains("-")) ? format2.parse(o1[7].trim()) : dateFormat.parse(o1[7].trim());
+                date2 = (o2[8].contains("-")) ? format2.parse(o2[8].trim()) : dateFormat.parse(o2[8].trim());
             } catch (ParseException e) {
                 throw new IllegalArgumentException(e);
             }

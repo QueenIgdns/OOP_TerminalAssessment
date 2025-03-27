@@ -52,12 +52,6 @@ public final class PayrollProcessing extends javax.swing.JFrame {
 //        setIconImage();
 
     }
-    
-    public void populateEmpFields() {
-        
-        
-        
-    }
 
     public void parseRecordsHoursWorked(List<String[]> records) {
 
